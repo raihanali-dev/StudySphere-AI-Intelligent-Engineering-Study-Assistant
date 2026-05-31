@@ -1,33 +1,58 @@
+# Core Framework
 fastapi==0.104.1
-uvicorn[standard]==0.24.0
+uvicorn==0.24.0
 sqlalchemy==2.0.23
 alembic==1.12.1
-psycopg2-binary==2.9.9
+
+# Database & Connection
+psycopg2-binary==2.9.10
+
+# Validation & Settings
 pydantic==2.5.0
 pydantic-settings==2.1.0
-python-jose[cryptography]==3.3.0
-passlib[bcrypt]==1.7.4
+
+# Authentication
+PyJWT==2.8.0
+passlib>=1.7.4
+python-jose[cryptography]>=3.3.0
+
+# File Upload
 python-multipart==0.0.6
 email-validator==2.1.0
-PyJWT==2.8.0
+
+# HTTP & API
 httpx==0.25.1
+
+# AI/LLM Integration
 google-generativeai==0.3.0
 langchain==0.1.0
 langchain-google-genai==0.0.6
-faiss-cpu==1.9.0.post1
-sentence-transformers==2.2.2
+
+# Vector Database - LIGHTWEIGHT for Railway Free Tier
+# Replaces: sentence-transformers (1.5GB) + transformers (2GB) + torch (600MB)
+chromadb==0.5.2
+
+# Document Processing
 pypdf==3.17.1
 pdfplumber==0.10.3
 python-docx==0.8.11
 python-pptx==0.6.21
 python-slugify==8.0.1
+
+# Image Processing
 Pillow==10.1.0
+
+# Async & File Operations
 aiofiles==23.2.1
+
+# Caching & Queue (optional, can be commented out for lighter deployments)
 redis==5.0.1
 celery==5.3.4
+
+# Environment
+python-dotenv==1.0.0
+
+# Testing
 pytest==7.4.3
 pytest-asyncio==0.21.1
 pytest-cov==4.1.0
-python-dotenv==1.0.0
-httpx==0.25.1
-cors==1.0.1

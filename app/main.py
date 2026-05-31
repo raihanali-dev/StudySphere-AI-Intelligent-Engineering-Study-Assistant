@@ -1,4 +1,5 @@
 """FastAPI application entry point."""
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
@@ -67,10 +68,15 @@ async def health_check():
 if __name__ == "__main__":
     import uvicorn
 
+    # Use Railway PORT env var if available, otherwise default to 8000
+    port = int(os.environ.get("PORT", 8000))
+    # Disable reload in production (Railway/Render environment)
+    reload = settings.DEBUG and os.environ.get("ENVIRONMENT") != "production"
+
     uvicorn.run(
         "app.main:app",
         host="0.0.0.0",
-        port=8000,
-        reload=settings.DEBUG,
+        port=port,
+        reload=reload,
         log_level="info",
     )
